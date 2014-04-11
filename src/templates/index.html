@@ -1,0 +1,15 @@
+{% extends "base.html" %}
+{% block content %}
+<p> You can create Meal <a href="/create">here.</a> Or a Meal Plan <a href="/plan">Here</a> </p>
+{% for meal in meals %}
+<div class="sticky taped" style="width: 300px;"> 
+<big>{{ meal.name }} </big> <br />
+    Meal(s) : <ul>{% for each in meal.type %}<li>- {{each}}</li>{% endfor %}</ul>
+    Price: {{ meal.price }} <br/>
+    Ingredients:<ul>{% for each in meal.ingredients %}<li>- {{each}}</li>{% endfor %}</ul>
+    Recipe:<ul>{% for each in meal.recipe %}<li>- {{each}}</li>{% endfor %}</ul>
+    Nutritional:<ul>{% for each in meal.nutritional %}<li>- {{each}}</li>{% endfor %}</ul>
+    (<a href ="/edit/{{ meal.key().id() }}">edit </a>)
+    </div>
+{% endfor %}
+{% endblock content %}
